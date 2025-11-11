@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Message } from '../types/message';
 import { MarkdownRenderer } from './MarkdownRenderer';
 
@@ -10,6 +11,14 @@ interface ChatMessagesProps {
 }
 
 export function ChatMessages({ messages, isLoading, messagesEndRef }: ChatMessagesProps) {
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const handleCopy = (content: string, messageId: string) => {
+    navigator.clipboard.writeText(content);
+    setCopiedId(messageId);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
   return (
     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 bg-[#1e1e2e]">
       {messages.length === 0 ? (
@@ -36,8 +45,16 @@ export function ChatMessages({ messages, isLoading, messagesEndRef }: ChatMessag
                 }`}
               >
                 {message.role === 'assistant' ? (
-                  <div className="prose prose-invert text-sm sm:text-base leading-relaxed wrap-break-word overflow-hidden">
-                    <MarkdownRenderer content={message.content} />
+                  <div>
+                    <div className="prose prose-invert text-sm sm:text-base leading-relaxed wrap-break-word overflow-hidden">
+                      <MarkdownRenderer content={message.content} />
+                    </div>
+                    <button
+                      onClick={() => handleCopy(message.content, message.id)}
+                      className="mt-2 text-xs px-2 py-1 bg-[#45475a] hover:bg-[#585b70] text-[#a6adc8] rounded transition"
+                    >
+                      {copiedId === message.id ? '✓ Copied!' : '📋 Copy'}
+                    </button>
                   </div>
                 ) : (
                   <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap wrap-break-word overflow-hidden">
