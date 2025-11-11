@@ -1,6 +1,7 @@
 'use client';
 
 import { Message } from '../types/message';
+import { MarkdownRenderer } from './MarkdownRenderer';
 
 interface ChatMessagesProps {
   messages: Message[];
@@ -34,9 +35,15 @@ export function ChatMessages({ messages, isLoading, messagesEndRef }: ChatMessag
                     : 'bg-[#313244] text-[#cdd6f4] rounded-bl-none border border-[#45475a]'
                 }`}
               >
-                <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
-                  {message.content}
-                </p>
+                {message.role === 'assistant' ? (
+                  <div className="prose prose-invert text-sm sm:text-base leading-relaxed">
+                    <MarkdownRenderer content={message.content} />
+                  </div>
+                ) : (
+                  <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
+                    {message.content}
+                  </p>
+                )}
               </div>
             </div>
           ))}
