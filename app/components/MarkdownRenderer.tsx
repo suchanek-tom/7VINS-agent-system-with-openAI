@@ -30,7 +30,11 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         h3: ({ children }) => (
           <h3 className="text-lg font-bold text-[#cdd6f4] mt-3 mb-1">{children}</h3>
         ),
-        p: ({ children }) => <p className="text-[#cdd6f4] mb-2 leading-relaxed">{children}</p>,
+        p: ({ children }) => (
+          <p className="text-[#cdd6f4] mb-2 leading-relaxed wrap-break-word overflow-hidden">
+            {children}
+          </p>
+        ),
         code: ({ className, children, node }: CodeProps) => {
           const inline = !node?.tagName?.includes('pre');
           const match = /language-(\w+)/.exec(className || '');
@@ -49,31 +53,37 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               <div className="bg-[#313244] px-4 py-2 text-xs text-[#6c7086] font-mono">
                 {language || 'code'}
               </div>
-              <pre className="bg-[#1e1e2e] p-4 overflow-x-auto">
-                <code className="text-[#cdd6f4] font-mono text-sm">{children}</code>
+              <pre className="bg-[#1e1e2e] p-4 overflow-x-auto overflow-y-auto max-h-96">
+                <code className="text-[#cdd6f4] font-mono text-sm whitespace-pre-wrap wrap-break-word">
+                  {children}
+                </code>
               </pre>
             </div>
           );
         },
         ul: ({ children }) => (
-          <ul className="list-disc list-inside text-[#cdd6f4] mb-2">{children}</ul>
+          <ul className="list-disc list-inside text-[#cdd6f4] mb-2 wrap-break-word">{children}</ul>
         ),
         ol: ({ children }) => (
-          <ol className="list-decimal list-inside text-[#cdd6f4] mb-2">{children}</ol>
+          <ol className="list-decimal list-inside text-[#cdd6f4] mb-2 wrap-break-word">
+            {children}
+          </ol>
         ),
-        li: ({ children }) => <li className="mb-1 ml-2">{children}</li>,
+        li: ({ children }) => (
+          <li className="mb-1 ml-2 wrap-break-word overflow-hidden">{children}</li>
+        ),
         a: ({ href, children }) => (
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#89b4fa] underline hover:text-[#a6d0ff]"
+            className="text-[#89b4fa] underline hover:text-[#a6d0ff] break-all"
           >
             {children}
           </a>
         ),
         blockquote: ({ children }) => (
-          <blockquote className="border-l-4 border-[#45475a] bg-[#313244] px-4 py-2 text-[#bac2de] italic my-2">
+          <blockquote className="border-l-4 border-[#45475a] bg-[#313244] px-4 py-2 text-[#bac2de] italic my-2 wrap-break-word overflow-hidden">
             {children}
           </blockquote>
         ),

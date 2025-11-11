@@ -22,25 +22,25 @@ export function ChatMessages({ messages, isLoading, messagesEndRef }: ChatMessag
           </p>
         </div>
       ) : (
-        <div className="max-w-2xl mx-auto space-y-4">
+        <div className="w-4/5 mx-auto space-y-4">
           {messages.map((message) => (
             <div
               key={message.id}
               className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-xs sm:max-w-lg lg:max-w-xl px-4 py-2 rounded-lg ${
+                className={`max-w-xl sm:max-w-2xl lg:max-w-4xl px-4 py-2 rounded-lg ${
                   message.role === 'user'
                     ? 'bg-[#89b4fa] text-[#1e1e2e] rounded-br-none shadow-lg'
                     : 'bg-[#313244] text-[#cdd6f4] rounded-bl-none border border-[#45475a]'
                 }`}
               >
                 {message.role === 'assistant' ? (
-                  <div className="prose prose-invert text-sm sm:text-base leading-relaxed">
+                  <div className="prose prose-invert text-sm sm:text-base leading-relaxed wrap-break-word overflow-hidden">
                     <MarkdownRenderer content={message.content} />
                   </div>
                 ) : (
-                  <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
+                  <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap wrap-break-word overflow-hidden">
                     {message.content}
                   </p>
                 )}

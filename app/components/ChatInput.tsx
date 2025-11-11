@@ -10,7 +10,7 @@ interface ChatInputProps {
 export function ChatInput({ input, isLoading, onInputChange, onSubmit }: ChatInputProps) {
   return (
     <div className="border-t border-[#313244] px-4 py-4 sm:px-6 bg-[#1e1e2e]">
-      <div className="max-w-2xl mx-auto">
+      <div className="w-4/5 mx-auto">
         <form onSubmit={onSubmit} className="flex gap-3">
           <input
             type="text"
