@@ -39,8 +39,8 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Ollama API error:', error);
     return NextResponse.json(
-      { 
-        error: 'Failed to get response from Ollama. Make sure Ollama is running with: ollama serve' 
+      {
+        error: 'Failed to get response from Ollama. Make sure Ollama is running with: ollama serve',
       },
       { status: 500 }
     );

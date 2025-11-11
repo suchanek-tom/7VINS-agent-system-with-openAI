@@ -1,29 +1,20 @@
 const config = {
-  name: "Agent System LLM OSU",
+  name: 'Agent System LLM OSU',
 
   root: process.cwd(),
 
-  ignore: [
-    "node_modules",
-    ".next",
-    ".git",
-    "dist",
-    "build",
-    "coverage",
-    ".env",
-    ".env.local",
-  ],
+  ignore: ['node_modules', '.next', '.git', 'dist', 'build', 'coverage', '.env', '.env.local'],
 
   models: {
-    default: "opencode",
+    default: 'opencode',
   },
 
-  theme: "tokyonight",
+  theme: 'tokyonight',
 
   formatters: {
     typescript: {
-      command: "prettier",
-      args: ["--write"],
+      command: 'prettier',
+      args: ['--write'],
     },
   },
 
@@ -33,17 +24,17 @@ const config = {
   },
 
   rules: {
-    allowedPaths: ["app", "lib", "src", "components"],
+    allowedPaths: ['app', 'lib', 'src', 'components'],
     protectedPaths: [
-      "package.json",
-      "tsconfig.json",
-      "next.config.ts",
-      "eslint.config.mjs",
-      "postcss.config.mjs",
-      ".env.local",
-      ".env",
-      "opencode.config.js",
-      "opencode.json",
+      'package.json',
+      'tsconfig.json',
+      'next.config.ts',
+      'eslint.config.mjs',
+      'postcss.config.mjs',
+      '.env.local',
+      '.env',
+      'opencode.config.js',
+      'opencode.json',
     ],
   },
 

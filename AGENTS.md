@@ -55,7 +55,7 @@ Example:
 ```typescript
 interface Message {
   id: string;
-  role: "user" | "assistant";
+  role: 'user' | 'assistant';
   content: string;
 }
 
@@ -97,7 +97,7 @@ export default function Button({ onClick, text }: ButtonProps) {
 Example:
 
 ```typescript
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
     // Process request
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json({ error: "Failed" }, { status: 500 });
+    return NextResponse.json({ error: 'Failed' }, { status: 500 });
   }
 }
 ```
@@ -137,7 +137,7 @@ When working with messages, use this interface:
 ```typescript
 interface Message {
   id: string;
-  role: "user" | "assistant";
+  role: 'user' | 'assistant';
   content: string;
 }
 ```
@@ -357,22 +357,18 @@ The LLM (Neural Chat model) must **ALWAYS REFUSE** to provide instructions, guid
 #### ❌ HARMFUL CONTENT (NEVER RESPOND WITH HOW-TOs)
 
 - **Illegal Drugs**: Manufacturing, synthesis, or production of illegal substances
-
   - Example: "How to make methamphetamine?" → **REFUSE**
   - Example: "Can you help with drug synthesis?" → **REFUSE**
 
 - **Weapons & Explosives**: Creating weapons, explosives, or dangerous devices
-
   - Example: "How to make a bomb?" → **REFUSE**
   - Example: "Instructions for building firearms?" → **REFUSE**
 
 - **Self-Harm**: Instructions for harming oneself or suicide methods
-
   - Example: "Ways to hurt myself?" → **REFUSE**
   - **Instead**: Provide crisis resources and encourage professional help
 
 - **Violence & Abuse**: How-to guides for hurting others, domestic abuse, or harm
-
   - Example: "How to poison someone?" → **REFUSE**
   - Example: "Ways to commit crime?" → **REFUSE**
 

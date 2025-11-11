@@ -7,12 +7,7 @@ interface ChatInputProps {
   onSubmit: (e: React.FormEvent) => void;
 }
 
-export function ChatInput({
-  input,
-  isLoading,
-  onInputChange,
-  onSubmit,
-}: ChatInputProps) {
+export function ChatInput({ input, isLoading, onInputChange, onSubmit }: ChatInputProps) {
   return (
     <div className="border-t border-[#313244] px-4 py-4 sm:px-6 bg-[#1e1e2e]">
       <div className="max-w-2xl mx-auto">
@@ -34,8 +29,7 @@ export function ChatInput({
           </button>
         </form>
         <p className="text-xs text-[#6c7086] mt-2 text-center">
-          🔒 All conversations stay local on your machine. Powered by Ollama
-          Neural Chat.
+          🔒 All conversations stay local on your machine. Powered by Ollama Neural Chat.
         </p>
       </div>
     </div>

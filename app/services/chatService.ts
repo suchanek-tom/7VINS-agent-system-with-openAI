@@ -11,9 +11,7 @@ interface ChatResponse {
   message: string;
 }
 
-export async function sendMessage(
-  messages: Message[]
-): Promise<string> {
+export async function sendMessage(messages: Message[]): Promise<string> {
   const response = await fetch('/api/chat', {
     method: 'POST',
     headers: {

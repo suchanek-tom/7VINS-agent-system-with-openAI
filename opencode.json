@@ -14,7 +14,11 @@
   },
   "formatter": {
     "prettier": {
-      "disabled": true
+      "command": ["npx", "prettier", "--write", "$FILE"],
+      "extensions": [".js", ".jsx", ".ts", ".tsx", ".json", ".md", ".css"],
+      "environment": {
+        "NODE_ENV": "development"
+      }
     }
   }
 }
